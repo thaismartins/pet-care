@@ -11,7 +11,13 @@ You need have:
 
 ### Get Started
 
-Get started with PetCare by starting a development server:
+Get started installing all project dependencies:
+
+```
+$ npm i
+```
+
+To starts a development server:
 
 ```
 $ yarn start
