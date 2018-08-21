@@ -1,40 +1,57 @@
-// import React from 'react';
+import React from 'react';
 // import { View, Text } from 'react-native';
 
-// import HomeScreen from './components/screens/Home';
-// export default class App extends React.Component {
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <HomeScreen />
-//       </View>
-//     );
-//   }
-// }
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+  createSwitchNavigator
+} from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
+import LoginScreen from './screens/Login';
+import HomeScreen from './screens/Home';
+import AuthLoadingScreen from './screens/AuthLoading';
 
-import { createStackNavigator } from 'react-navigation';
+const AuthStack = createStackNavigator({ 
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null
+    }
+  }
+});
+const AppStack = createBottomTabNavigator({
+  Home: HomeScreen,
+  Login: LoginScreen,
+}, {
+  initialRouteName: 'Login',
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      if (routeName === 'Home') {
+        iconName = `superpowers${focused ? '' : ''}`;
+      } else if (routeName === 'Login') {
+        iconName = `gears${focused ? '' : ''}`;
+      }
 
-import LoginScreen from './components/screens/Login';
-import HomeScreen from './components/screens/Home';
+      return <Icon name={iconName} size={25} color={tintColor} />;
+    },
+  }),
+  tabBarOptions: {
+    activeTintColor: 'tomato',
+    inactiveTintColor: 'gray',
+    style: {
+      backgroundColor: '#240c5d',
+    }
+  }
+});
 
-const App = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Login: LoginScreen,
+export default createSwitchNavigator({
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
   },
   {
-    initialRouteName: 'Login',
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: '#240c5d',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
-
-export default App;
+    initialRouteName: 'AuthLoading',
+  });
