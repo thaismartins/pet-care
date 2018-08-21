@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 
 
-export default class Login extends React.Component {
+export default class LoginScreen extends React.Component {
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ export default class Login extends React.Component {
         <TextInput style={styles.input} placeholder="Seu Celular" textContentType="telephoneNumber" keyboardType="phone-pad" />
         <TextInput style={styles.input} placeholder="Sua Senha" secureTextEntry={true} textContentType="password" />
 
-        <TouchableOpacity style={styles.button} onPress={() => console.warn('clicou') }>
+        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Home') }>
           <Text style={styles.buttonText}>
             Entrar
           </Text>
