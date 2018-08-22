@@ -17,7 +17,7 @@ import { TextInputMask } from 'react-native-masked-text';
 const LOGIN_BOX_TOP = 150;
 const LOGIN_BOX_TOP_MIN = 0;
 
-const LOGO_TEXT_HEIGHT = 70;
+const LOGO_TEXT_HEIGHT = 60;
 const LOGO_TEXT_HEIGHT_MIN = 40;
 
 const { width } = Dimensions.get('window');
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
       width: width * 0.6,
       height: 80,
       resizeMode: 'contain',
-      marginBottom: 10
+      marginBottom: 5
     },
     logoText: {
       resizeMode: 'contain',
