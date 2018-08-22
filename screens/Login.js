@@ -89,12 +89,16 @@ export default class LoginScreen extends Component {
         <Animated.View style={{
             position: 'absolute',
             top: this.logoTop,
-            alignItems: 'center'
-          }}>
+            alignItems: 'center'}}>
 
           <View style={{ marginBottom: 20, alignItems: 'center' }}>
-            <Animated.Image style={[{ opacity: this.logoOpacity }, styles.logo]} source={require('../public/images/logo.png')} />
-            <Animated.Image style={[{ height: this.logoTextHeight }, styles.logoText]} source={require('../public/images/petcare.png')} />
+            <Animated.Image
+              style={[{ opacity: this.logoOpacity }, styles.logo]}
+              source={require('../public/images/logo.png')} />
+
+            <Animated.Image
+              style={[{ height: this.logoTextHeight }, styles.logoText]}
+              source={require('../public/images/petcare.png')} />
           </View>
           
           <TextInputMask
@@ -103,14 +107,25 @@ export default class LoginScreen extends Component {
             placeholderTextColor="#fff"
             textContentType="telephoneNumber"
             keyboardType="phone-pad"
-            type={'cel-phone'} />
-          <TextInput style={styles.input} placeholder="Sua Senha" placeholderTextColor="#fff" secureTextEntry={true} textContentType="password" />
+            type={'cel-phone'}
+            underlineColorAndroid="transparent" />
 
-          <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Home') }>
+          <TextInput
+            style={styles.input}
+            placeholder="Sua Senha"
+            placeholderTextColor="#fff"
+            secureTextEntry={true} 
+            textContentType="password"
+            underlineColorAndroid="transparent" />
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.props.navigation.navigate('Home') }>
             <Text style={styles.buttonText}>
               Entrar
             </Text>
           </TouchableOpacity>
+          
         </Animated.View>
       </View>
     );
