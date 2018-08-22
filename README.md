@@ -45,7 +45,10 @@ $ yarn test
 
 ## Built With
 
-* [Create React Native App](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [React Native](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [React Navigation - react-navigation](https://reactnavigation.org/docs/)
+* [Text Input Mask - react-native-text-input-mask](https://github.com/react-native-community/react-native-text-input-mask)
+* [React Native Vector Icons - react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 
 ## Versioning
 

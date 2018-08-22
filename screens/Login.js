@@ -12,7 +12,7 @@ import {
   Platform
 } from 'react-native';
 
-// import TextInputMask from 'react-native-text-input-mask';
+import TextInputMask from 'react-native-text-input-mask';
 
 const LOGIN_BOX_TOP = 150;
 const LOGIN_BOX_TOP_MIN = 0;
@@ -97,8 +97,8 @@ export default class LoginScreen extends Component {
             <Animated.Image style={[{ height: this.logoTextHeight }, styles.logoText]} source={require('../public/images/petcare.png')} />
           </View>
           
-          <TextInput style={styles.input} placeholder="Seu Celular" textContentType="telephoneNumber" keyboardType="phone-pad" />
-          <TextInput style={styles.input} placeholder="Sua Senha" secureTextEntry={true} textContentType="password" />
+          <TextInputMask style={styles.input} placeholder="Seu Celular" placeholderTextColor="#fff" textContentType="telephoneNumber" keyboardType="phone-pad" />
+          <TextInput style={styles.input} placeholder="Sua Senha" placeholderTextColor="#fff" secureTextEntry={true} textContentType="password" />
 
           <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Home') }>
             <Text style={styles.buttonText}>
