@@ -13,15 +13,16 @@ import {
 } from 'react-native';
 
 import { TextInputMask } from 'react-native-masked-text';
+import LinearGradient from 'react-native-linear-gradient';
 
-const LOGIN_BOX_TOP = 150;
-const LOGIN_BOX_TOP_MIN = 0;
+
+const { width, height } = Dimensions.get('window');
+
+const LOGIN_BOX_BOTTOM = height * 0.25;
+const LOGIN_BOX_BOTTOM_MIN = 20;
 
 const LOGO_TEXT_HEIGHT = 60;
 const LOGO_TEXT_HEIGHT_MIN = 40;
-
-const { width } = Dimensions.get('window');
-
 export default class LoginScreen extends Component {
 
   constructor(props) {
@@ -30,7 +31,7 @@ export default class LoginScreen extends Component {
 
   componentWillMount() {
 
-    this.logoTop = new Animated.Value(LOGIN_BOX_TOP);
+    this.logoBottom = new Animated.Value(LOGIN_BOX_BOTTOM);
     this.logoOpacity = new Animated.Value(1);
     this.logoTextHeight = new Animated.Value(LOGO_TEXT_HEIGHT_MIN);
     
@@ -48,8 +49,8 @@ export default class LoginScreen extends Component {
     let duration = Platform.OS == 'android' ? 160 : event.duration;
 
     Animated.parallel([
-      Animated.timing(this.logoTop, {
-        toValue: LOGIN_BOX_TOP_MIN,
+      Animated.timing(this.logoBottom, {
+        toValue: LOGIN_BOX_BOTTOM_MIN,
         duration: duration
       }).start(),
       Animated.timing(this.logoOpacity, {
@@ -68,8 +69,8 @@ export default class LoginScreen extends Component {
     let duration = Platform.OS == 'android' ? 160 : event.duration;
 
     Animated.parallel([
-      Animated.timing(this.logoTop, {
-        toValue: LOGIN_BOX_TOP,
+      Animated.timing(this.logoBottom, {
+        toValue: LOGIN_BOX_BOTTOM,
         duration: duration
       }).start(),
       Animated.timing(this.logoOpacity, {
@@ -85,48 +86,56 @@ export default class LoginScreen extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Animated.View style={{
+      <View style={{flex: 1}}>
+        <LinearGradient
+            colors={['#582089', '#301167', '#240c5d']}
+            style={styles.container}>
+            
+          <Animated.View style={{
             position: 'absolute',
-            top: this.logoTop,
+            bottom: this.logoBottom,
             alignItems: 'center'}}>
 
-          <View style={{ marginBottom: 20, alignItems: 'center' }}>
-            <Animated.Image
-              style={[{ opacity: this.logoOpacity }, styles.logo]}
-              source={require('../public/images/logo.png')} />
+            <View style={{ marginBottom: 20, alignItems: 'center' }}>
+              <Animated.Image
+                style={[{ opacity: this.logoOpacity }, styles.logo]}
+                source={require('../public/images/logo.png')} />
 
-            <Animated.Image
-              style={[{ height: this.logoTextHeight }, styles.logoText]}
-              source={require('../public/images/petcare.png')} />
-          </View>
-          
-          <TextInputMask
-            style={styles.input}
-            placeholder="Seu Celular"
-            placeholderTextColor="#fff"
-            textContentType="telephoneNumber"
-            keyboardType="phone-pad"
-            type={'cel-phone'}
-            underlineColorAndroid="transparent" />
+              <Animated.Image
+                style={[{ height: this.logoTextHeight }, styles.logoText]}
+                source={require('../public/images/petcare.png')} />
+            </View>
+            
+            <TextInputMask
+              style={styles.input}
+              placeholder="Seu Celular"
+              placeholderTextColor="#fff"
+              textContentType="telephoneNumber"
+              keyboardType="phone-pad"
+              type={'cel-phone'}
+              underlineColorAndroid="transparent" />
 
-          <TextInput
-            style={styles.input}
-            placeholder="Sua Senha"
-            placeholderTextColor="#fff"
-            secureTextEntry={true} 
-            textContentType="password"
-            underlineColorAndroid="transparent" />
+            <TextInput
+              style={styles.input}
+              placeholder="Sua Senha"
+              placeholderTextColor="#fff"
+              secureTextEntry={true} 
+              textContentType="password"
+              underlineColorAndroid="transparent" />
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => this.props.navigation.navigate('Home') }>
-            <Text style={styles.buttonText}>
-              Entrar
-            </Text>
-          </TouchableOpacity>
-          
-        </Animated.View>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Home') }>
+              <LinearGradient
+                colors={['#dc5225', '#c11d2e']}
+                style={styles.button}>
+                  <Text style={styles.buttonText}>
+                    Entrar
+                  </Text>
+              </LinearGradient>
+            </TouchableOpacity>
+            
+          </Animated.View>
+        </LinearGradient>
       </View>
     );
   }
