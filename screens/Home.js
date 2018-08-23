@@ -1,12 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text
+} from 'react-native';
+
+import TalkBalloon from '../components/TalkBalloon/TalkBalloon';
+import Header from '../components/Header/Header';
 
 export default class HomeScreen extends React.Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>Entrou na home</Text>
+        <Header />
+        <TalkBalloon />
+        <TalkBalloon />
       </View>
     );
   }
