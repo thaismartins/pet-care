@@ -11,6 +11,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import LoginScreen from './screens/Login';
 import HomeScreen from './screens/Home';
 import AuthLoadingScreen from './screens/AuthLoading';
+import MediasScreen from './screens/Medias';
+import NotificationsScreen from './screens/Notifications';
 
 const AuthStack = createStackNavigator({ 
   Login: {
@@ -20,27 +22,37 @@ const AuthStack = createStackNavigator({
     }
   }
 });
+
 const AppStack = createBottomTabNavigator({
   Home: HomeScreen,
-  Login: LoginScreen,
+  Medias: MediasScreen,
+  Notifications: {
+    screen: NotificationsScreen,
+    navigationOptions: {
+      header: { visible: false },
+    },
+  }
 }, {
-  initialRouteName: 'Login',
+  initialRouteName: 'Home',
   navigationOptions: ({ navigation }) => ({
     tabBarIcon: ({ focused, tintColor }) => {
       const { routeName } = navigation.state;
       let iconName;
       if (routeName === 'Home') {
-        iconName = `superpowers${focused ? '' : ''}`;
-      } else if (routeName === 'Login') {
-        iconName = `gears${focused ? '' : ''}`;
-      }
+        iconName = 'home';
+      } else if(routeName === 'Medias') {
+        iconName = 'image';
+      } else if(drouteName === 'Notifications') {
+        iconName = 'gears';
+      } 
 
-      return <Icon name={iconName} size={25} color={tintColor} />;
+      return <Icon name={iconName} size={30} color={tintColor} />;
     },
   }),
   tabBarOptions: {
-    activeTintColor: 'tomato',
-    inactiveTintColor: 'gray',
+    activeTintColor: '#dc5225',
+    inactiveTintColor: '#fff',
+    showLabel: false,
     style: {
       backgroundColor: '#240c5d',
     }
