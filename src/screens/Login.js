@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   Image,
   TextInput,
   Animated,
@@ -16,6 +15,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { colors } from '../theme';
+import Button from '../components/Button';
 
 const { width, height } = Dimensions.get('window');
 
@@ -87,6 +87,10 @@ export default class LoginScreen extends Component {
     ]);
   }
 
+  _doLogin() {
+    this.props.navigation.navigate('Home');
+  }
+
   render() {
     const backgroundColors = [
       colors.purples.start,
@@ -94,15 +98,11 @@ export default class LoginScreen extends Component {
       colors.purples.end
     ];
 
-    const buttonColors = [
-      colors.oranges.start,
-      color.oranges.end
-    ];
-
     return (
       <View style={{flex: 1}}>
         <LinearGradient
             colors={backgroundColors}
+            locations={[ 0, 0.3, 0.6 ]}
             style={styles.container}>
             
           <Animated.View style={{
@@ -137,17 +137,7 @@ export default class LoginScreen extends Component {
               textContentType="password"
               underlineColorAndroid="transparent" />
 
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Home') }>
-              <LinearGradient
-                colors={buttonColors}
-                style={styles.button}>
-                  <Text style={styles.buttonText}>
-                    Entrar
-                  </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-            
+            <Button text="Entrar" onPress={() => this._doLogin()} />
           </Animated.View>
         </LinearGradient>
       </View>
@@ -178,17 +168,5 @@ const styles = StyleSheet.create({
       borderBottomColor: colors.white,
       borderBottomWidth: 1,
       textAlign: 'center'
-    },
-    button: {
-      width: 140,
-      height: 40,
-      borderRadius: 20,
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 20
-    },
-    buttonText: {
-      color: colors.white,
     }
   });
