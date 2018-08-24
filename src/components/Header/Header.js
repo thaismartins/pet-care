@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { withNavigation } from 'react-navigation';
 
 import Badge from '../Badge/Badge';
+import { colors, fonts, icons } from '../../theme';
 
 class Header extends Component {
 
@@ -23,16 +24,16 @@ class Header extends Component {
     return (
       <View style={{  height: 100 }}>
         <View style={styles.box}>
-          <Text style={styles.name}>COOPER</Text>
+          <Text style={styles.name}>Cooper</Text>
         </View>
         <Image
           style={styles.photo}
           source={require('../../../public/images/dog.jpg')} />
         <View style={styles.notification}>
-          <Badge number={0} />
+          <Badge number={3} />
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Notifications') }>
-            <Icon name="bell" size={25} color="#fff" />
+            <Icon name="bell" size={icons.sizes.header} color={colors.white} />
           </TouchableOpacity>
         </View>
       </View>
@@ -45,13 +46,14 @@ export default withNavigation(Header);
 const styles = StyleSheet.create({
   box: {
     height: 60,
-    backgroundColor: '#582089',
-    paddingLeft: 100,
+    backgroundColor: colors.purples.start,
+    paddingLeft: 110,
     justifyContent: 'center'
   },
   name: {
-    color: '#fff',
-    fontWeight: 'bold'
+    color: colors.white,
+    fontWeight: fonts.weights.bold,
+    fontSize: fonts.sizes.headerTitle
   },
   photo: {
     width: 80,
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     top: 10,
     left: 15,
     borderWidth: 3,
-    borderColor: '#fff'
+    borderColor: colors.white
   },
   notification: {
     position: 'absolute',

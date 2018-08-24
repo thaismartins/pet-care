@@ -1,10 +1,10 @@
 const white = '#FFFFFF';
-const black = '#0F131A';
+const black = '#6a666d';
 
 const neutrals = {
   start: '#f5f7f9',
   middle: '#dddddd',
-  end: '#f5f7f9'
+  end: '#b9b9b9'
 }
 
 const purples = {

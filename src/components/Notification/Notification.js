@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import {
   StyleSheet,
   View,
   Text,
   Image
 } from 'react-native';
+
+import { colors, fonts } from '../../theme';
 
 export default class Notification extends Component {
 
@@ -15,7 +16,7 @@ export default class Notification extends Component {
   }
 
   render() {
-    const { text, color } = this.props;
+    const { text } = this.props;
 
     return (
       <View style={styles.container}>
@@ -41,20 +42,20 @@ const styles = StyleSheet.create({
   container: {
     minHeight: 60,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     marginTop: 5,
     borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    borderBottomColor: colors.neutrals.middle,
     flexDirection: 'row',
   },
   title: {
     fontWeight: 'bold',
-    color: '#240c5d',
+    color: colors.purples.start,
     marginBottom: 5
   },
   sendedBy: {
-    fontSize: 12,
-    opacity: 0.6,
+    fontSize: fonts.sizes.small,
+    color: colors.neutrals.end,
     alignSelf: 'flex-end',
     marginTop: 5
   },

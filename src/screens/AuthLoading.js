@@ -7,6 +7,8 @@ import {
   View,
 } from 'react-native';
 
+import { colors, icons } from '../theme';
+
 export default class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ export default class AuthLoadingScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size={60} color="#fff" />
+        <ActivityIndicator size={icons.sizes.loading} color={colors.white} />
       </View>
     );
   }
@@ -32,6 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#240c5d'
+    backgroundColor: colors.purples.start
   }
 });

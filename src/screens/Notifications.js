@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: colors.white,
-    fontWeight: fonts.weigths.bold,
+    fontWeight: fonts.weights.bold,
     fontSize: fonts.sizes.headerTitle
   }
 });
