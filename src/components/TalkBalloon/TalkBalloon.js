@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -15,17 +16,27 @@ export default class TalkBalloon extends Component {
   }
 
   render() {
+    const { text, time, image } = this.props;
+
     return (
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={require('../../../public/images/dog.jpg')} />
-        <Text style={styles.text}>Entrou TalkBaloon</Text>
-        <Text style={styles.sendedBy}>11:48</Text>
+        <View style={styles.body}>
+          <Image
+            style={styles.image}
+            source={image} />
+          <Text style={styles.text}>{ text }</Text>
+        </View>
+        <Text style={styles.sendedBy}>{ time }</Text>
       </View>
     );fff
   }
 }
+
+TalkBalloon.propTypes = {
+  text: PropTypes.string.isRequired,
+  time: PropTypes.string.isRequired,
+  image: PropTypes.number
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -33,18 +44,23 @@ const styles = StyleSheet.create({
     minHeight: 80,
     marginHorizontal: 15,
     marginVertical: 7,
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    borderBottomRightRadius: 30,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
     borderColor: colors.neutrals.middle,
     borderBottomWidth: 2,
     borderLeftWidth: 1,
-    flexDirection: 'row',
+    borderRightWidth: 1,
     overflow: 'hidden'
+  },
+  body: {
+    flex: 1,
+    flexDirection: 'row',
   },
   image: {
     width: 100,
-    height: 100
+    height: 100,
+    borderBottomRightRadius: 10,
   },
   text: {
     color: colors.black,
@@ -54,6 +70,7 @@ const styles = StyleSheet.create({
   sendedBy: {
     fontSize: fonts.sizes.small,
     color: colors.neutrals.end,
+    flex: 1,
     alignSelf: 'flex-end',
     marginHorizontal: 20,
     marginBottom: 10
