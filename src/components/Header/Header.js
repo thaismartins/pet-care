@@ -29,13 +29,12 @@ class Header extends Component {
         <Image
           style={styles.photo}
           source={require('../../../public/images/dog.jpg')} />
-        <View style={styles.notification}>
+        <TouchableOpacity
+          style={styles.notification}
+          onPress={() => this.props.navigation.navigate('Notifications') }>
           <Badge number={3} />
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Notifications') }>
-            <Icon name="bell" size={icons.sizes.header} color={colors.white} />
-          </TouchableOpacity>
-        </View>
+          <Icon name="bell" size={icons.sizes.header} color={colors.white} />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -67,7 +66,8 @@ const styles = StyleSheet.create({
   },
   notification: {
     position: 'absolute',
-    right: 15,
-    top: 17
+    right: 0,
+    top: 2,
+    padding: 15
   },
 });
