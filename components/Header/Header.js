@@ -29,7 +29,7 @@ class Header extends Component {
           style={styles.photo}
           source={require('../../public/images/dog.jpg')} />
         <View style={styles.notification}>
-          <Badge number="0" />
+          <Badge number={0} />
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('Notifications') }>
             <Icon name="bell" size={25} color="#fff" />
