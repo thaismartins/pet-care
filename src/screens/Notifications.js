@@ -9,7 +9,9 @@ import {
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import Notification from '../components/Notification/Notification';
+import Notification from '../components/Notification';
+
+import { colors, fonts } from '../theme';
 
 export default class NotificationsScreen extends Component {
 
@@ -20,9 +22,9 @@ export default class NotificationsScreen extends Component {
           <TouchableHighlight
             style={styles.backButton}
             onPress={() => this.props.navigation.navigate('Home')}>
-            <Icon name="arrow-left" size={25} color="#fff" />
+            <Icon name="arrow-left" size={25} color={colors.white} />
           </TouchableHighlight>
-          <Text style={styles.text}>Notificações</Text>
+          <Text style={styles.title}>Notificações</Text>
         </View>
         <Notification text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis mollis porttitor. Cras imperdiet interdum metus sed volutpat. Morbi sed metus non lacus auctor condimentum eget quis dui. Sed consectetur metus lacus, non vehicula nisi tempor imperdiet. Nulla facilisi." />
         <Notification text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis mollis porttitor." />
@@ -34,7 +36,7 @@ export default class NotificationsScreen extends Component {
 const styles = StyleSheet.create({
   header: {
     height: 60,
-    backgroundColor: '#582089',
+    backgroundColor: colors.purples.start,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -43,9 +45,9 @@ const styles = StyleSheet.create({
     top: 15,
     left: 15
   },
-  text: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 18
+  title: {
+    color: colors.white,
+    fontWeight: fonts.weigths.bold,
+    fontSize: fonts.sizes.headerTitle
   }
 });
