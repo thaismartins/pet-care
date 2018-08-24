@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
+  StyleSheet,
   View,
   Text,
-  StyleSheet
+  Image
 } from 'react-native';
 
 export default class TalkBalloon extends Component {
@@ -14,7 +15,11 @@ export default class TalkBalloon extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image
+          style={styles.image}
+          source={require('../../public/images/dog.jpg')} />
         <Text style={styles.text}>Entrou TalkBaloon</Text>
+        <Text style={styles.sendedBy}>11:48</Text>
       </View>
     );
   }
@@ -33,7 +38,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderRightWidth: 1
   },
-  text: {
-
-  }
+  image: {
+    flex: 1,
+    width: 100,
+  },
+  sendedBy: {
+    fontSize: 12,
+    opacity: 0.6,
+    alignSelf: 'flex-end',
+    marginTop: 5
+  },
 });
