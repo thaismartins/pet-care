@@ -15,6 +15,8 @@ import {
 import { TextInputMask } from 'react-native-masked-text';
 import LinearGradient from 'react-native-linear-gradient';
 
+import { colors } from '../theme';
+
 const { width, height } = Dimensions.get('window');
 
 const LOGIN_BOX_BOTTOM = height * 0.25;
@@ -86,10 +88,21 @@ export default class LoginScreen extends Component {
   }
 
   render() {
+    const backgroundColors = [
+      colors.purples.start,
+      colors.purples.middle,
+      colors.purples.end
+    ];
+
+    const buttonColors = [
+      colors.oranges.start,
+      color.oranges.end
+    ];
+
     return (
       <View style={{flex: 1}}>
         <LinearGradient
-            colors={['#582089', '#301167', '#240c5d']}
+            colors={backgroundColors}
             style={styles.container}>
             
           <Animated.View style={{
@@ -110,7 +123,7 @@ export default class LoginScreen extends Component {
             <TextInputMask
               style={styles.input}
               placeholder="Seu Celular"
-              placeholderTextColor="#fff"
+              placeholderTextColor={colors.white}
               textContentType="telephoneNumber"
               keyboardType="phone-pad"
               type={'cel-phone'}
@@ -119,7 +132,7 @@ export default class LoginScreen extends Component {
             <TextInput
               style={styles.input}
               placeholder="Sua Senha"
-              placeholderTextColor="#fff"
+              placeholderTextColor={colors.white}
               secureTextEntry={true} 
               textContentType="password"
               underlineColorAndroid="transparent" />
@@ -127,7 +140,7 @@ export default class LoginScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Home') }>
               <LinearGradient
-                colors={['#dc5225', '#c11d2e']}
+                colors={buttonColors}
                 style={styles.button}>
                   <Text style={styles.buttonText}>
                     Entrar
@@ -161,8 +174,8 @@ const styles = StyleSheet.create({
       width: width * 0.6,
       height: 50,
       marginBottom: 20,
-      color: '#fff',
-      borderBottomColor: '#fff',
+      color: colors.white,
+      borderBottomColor: colors.white,
       borderBottomWidth: 1,
       textAlign: 'center'
     },
@@ -170,13 +183,12 @@ const styles = StyleSheet.create({
       width: 140,
       height: 40,
       borderRadius: 20,
-      backgroundColor: '#c11d2e',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       marginTop: 20
     },
     buttonText: {
-      color: '#fff',
+      color: colors.white,
     }
   });
