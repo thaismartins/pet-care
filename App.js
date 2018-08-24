@@ -8,11 +8,11 @@ import {
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import LoginScreen from './screens/Login';
-import HomeScreen from './screens/Home';
-import AuthLoadingScreen from './screens/AuthLoading';
-import MediasScreen from './screens/Medias';
-import NotificationsScreen from './screens/Notifications';
+import AuthLoadingScreen from './src/screens/AuthLoading';
+import LoginScreen from './src/screens/Login';
+import HomeScreen from './src/screens/Home';
+import MediasScreen from './src/screens/Medias';
+import NotificationsScreen from './src/screens/Notifications';
 
 const AuthStack = createStackNavigator({ 
   Login: {
@@ -42,7 +42,7 @@ const AppStack = createBottomTabNavigator({
         iconName = 'home';
       } else if(routeName === 'Medias') {
         iconName = 'image';
-      } else if(drouteName === 'Notifications') {
+      } else if(routeName === 'Notifications') {
         iconName = 'gears';
       } 
 
