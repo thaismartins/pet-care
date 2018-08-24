@@ -1,6 +1,7 @@
 import React from 'react';
-import Notification from './Notification';
 import renderer from 'react-test-renderer';
+
+import Notification from './Notification';
 
 it('renders without crashing', () => {
   const rendered = renderer.create(<Notification text="Ok" />).toJSON();

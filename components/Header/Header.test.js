@@ -1,9 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Badge from './Badge';
+import Header from './Header';
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Badge />).toJSON();
+  const rendered = renderer.create(<Header />).toJSON();
   expect(rendered).toBeTruthy();
 });
