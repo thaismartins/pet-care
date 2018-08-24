@@ -21,7 +21,7 @@ export default class Notification extends Component {
       <View style={styles.container}>
         <Image
             style={styles.image}
-            source={require('../../public/images/dog.jpg')}
+            source={require('../../../public/images/dog.jpg')}
           />
         <View style={{ flex: 1 }}>
           <Text style={styles.title}>Vencimento do Pagamento</Text>

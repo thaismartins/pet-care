@@ -27,7 +27,7 @@ class Header extends Component {
         </View>
         <Image
           style={styles.photo}
-          source={require('../../public/images/dog.jpg')} />
+          source={require('../../../public/images/dog.jpg')} />
         <View style={styles.notification}>
           <Badge number={0} />
           <TouchableOpacity

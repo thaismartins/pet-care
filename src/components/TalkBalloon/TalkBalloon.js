@@ -17,7 +17,7 @@ export default class TalkBalloon extends Component {
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require('../../public/images/dog.jpg')} />
+          source={require('../../../public/images/dog.jpg')} />
         <Text style={styles.text}>Entrou TalkBaloon</Text>
         <Text style={styles.sendedBy}>11:48</Text>
       </View>

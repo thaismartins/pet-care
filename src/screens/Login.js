@@ -15,7 +15,6 @@ import {
 import { TextInputMask } from 'react-native-masked-text';
 import LinearGradient from 'react-native-linear-gradient';
 
-
 const { width, height } = Dimensions.get('window');
 
 const LOGIN_BOX_BOTTOM = height * 0.25;
@@ -23,6 +22,8 @@ const LOGIN_BOX_BOTTOM_MIN = 20;
 
 const LOGO_TEXT_HEIGHT = 60;
 const LOGO_TEXT_HEIGHT_MIN = 40;
+
+
 export default class LoginScreen extends Component {
 
   constructor(props) {
@@ -99,11 +100,11 @@ export default class LoginScreen extends Component {
             <View style={{ marginBottom: 20, alignItems: 'center' }}>
               <Animated.Image
                 style={[{ opacity: this.logoOpacity }, styles.logo]}
-                source={require('../public/images/logo.png')} />
+                source={require('../../public/images/logo.png')} />
 
               <Animated.Image
                 style={[{ height: this.logoTextHeight }, styles.logoText]}
-                source={require('../public/images/petcare.png')} />
+                source={require('../../public/images/petcare.png')} />
             </View>
             
             <TextInputMask
@@ -144,7 +145,6 @@ export default class LoginScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#240c5d',
       alignItems: 'center',
       justifyContent: 'center',
     },

@@ -5,8 +5,10 @@ import {
   Text
 } from 'react-native';
 
-import TalkBalloon from '../components/TalkBalloon/TalkBalloon';
-import Header from '../components/Header/Header';
+import TalkBalloon from '../components/TalkBalloon';
+import Header from '../components/Header';
+
+import { colors } from '../theme';
 
 export default class HomeScreen extends React.Component {
 
@@ -24,6 +26,6 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f7f9' 
+    backgroundColor: colors.neutrals.start
   }
 });
