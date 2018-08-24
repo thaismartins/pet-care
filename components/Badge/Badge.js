@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   StyleSheet,
@@ -32,6 +33,10 @@ export default class Badge extends Component {
     );
   }
 }
+
+Badge.propTypes = {
+  number: PropTypes.number.isRequired
+};
 
 const styles = StyleSheet.create({
   badge: {
