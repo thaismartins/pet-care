@@ -17,7 +17,7 @@ class CloseButton extends Component {
 
   _returnToPreviousScreen() {
     if(!this.props.navigation.goBack())
-      this.props.navigation.navigate('Notifications');
+      this.props.navigation.navigate('Home');
   }
 
   render() {

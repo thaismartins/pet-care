@@ -8,12 +8,52 @@ import {
 } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import { colors } from './src/theme';
+
 import AuthLoadingScreen from './src/screens/AuthLoading';
 import LoginScreen from './src/screens/Login';
 import HomeScreen from './src/screens/Home';
 import MediasScreen from './src/screens/Medias';
 import NotificationsScreen from './src/screens/Notifications';
 import MediaDetails from './src/screens/MediaDetails';
+
+const HomeStack = createStackNavigator({
+    Home: {
+      screen: HomeScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
+    Notifications: {
+      screen: NotificationsScreen,
+      navigationOptions: {
+        title: 'Notificações',
+      },
+    }
+  },
+  {
+    initialRouteName: 'Home',
+    navigationOptions: {
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: colors.purples.start
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        alignSelf: 'center'
+      },
+    }
+});
+
+const MediasStack = createStackNavigator({
+  Medias: MediasScreen,
+  MediaDetails: MediaDetails
+}, {
+  navigationOptions: {
+    header: null
+  }
+});
 
 const AuthStack = createStackNavigator({ 
   Login: {
@@ -25,15 +65,8 @@ const AuthStack = createStackNavigator({
 });
 
 const AppStack = createBottomTabNavigator({
-  Home: HomeScreen,
-  Medias: MediasScreen,
-  MediaDetails: MediaDetails,
-  Notifications: {
-    screen: NotificationsScreen,
-    navigationOptions: {
-      header: { visible: false },
-    },
-  }
+  Home: HomeStack,
+  Medias: MediasStack
 }, {
   initialRouteName: 'Home',
   navigationOptions: ({ navigation }) => ({
@@ -44,19 +77,17 @@ const AppStack = createBottomTabNavigator({
         iconName = 'home';
       } else if(routeName === 'Medias') {
         iconName = 'image';
-      } else if(routeName === 'Notifications') {
-        iconName = 'gears';
       } 
 
       return <Icon name={iconName} size={30} color={tintColor} />;
     },
   }),
   tabBarOptions: {
-    activeTintColor: '#dc5225',
+    activeTintColor: colors.oranges.start,
     inactiveTintColor: '#fff',
     showLabel: false,
     style: {
-      backgroundColor: '#240c5d',
+      backgroundColor: colors.purples.start,
     }
   }
 });
