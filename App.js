@@ -13,6 +13,7 @@ import LoginScreen from './src/screens/Login';
 import HomeScreen from './src/screens/Home';
 import MediasScreen from './src/screens/Medias';
 import NotificationsScreen from './src/screens/Notifications';
+import MediaDetails from './src/screens/MediaDetails';
 
 const AuthStack = createStackNavigator({ 
   Login: {
@@ -26,6 +27,7 @@ const AuthStack = createStackNavigator({
 const AppStack = createBottomTabNavigator({
   Home: HomeScreen,
   Medias: MediasScreen,
+  MediaDetails: MediaDetails,
   Notifications: {
     screen: NotificationsScreen,
     navigationOptions: {

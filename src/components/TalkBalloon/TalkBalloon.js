@@ -4,31 +4,77 @@ import {
   StyleSheet,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
+
+import { withNavigation } from 'react-navigation';
 
 import { colors, fonts } from '../../theme';
 
-export default class TalkBalloon extends Component {
+class TalkBalloon extends Component {
 
   constructor(props) {
     super(props);
   }
 
-  render() {
+  _goToMediaDetails() {
+    const { text, time, image } = this.props;
+    
+    this.props.navigation.navigate({
+      routeName: 'MediaDetails',
+      params: {
+        text,
+        time,
+        image
+      }
+    });
+  }
+
+  _generateView() {
     const { text, time, image } = this.props;
 
+    if(image) {
+      return this._showViewWithImage(text, time, image);
+    } else {
+      return this._showViewWithoutImage(text, time);
+    }
+  }
+
+  _showViewWithImage(text, time, image) {
     return (
-      <View style={styles.container}>
+      <TouchableOpacity
+        onPress={ () => this._goToMediaDetails() }>
+         <View>
+          <View style={styles.body}>
+            <Image
+              style={styles.image}
+              source={image} />
+            <Text style={styles.text}>{ text }</Text>
+          </View>
+          <Text style={styles.sendedBy}>{ time }</Text>
+         </View>
+      </TouchableOpacity>
+    );
+  }
+
+  _showViewWithoutImage(text, time) {
+    return (
+      <View>
         <View style={styles.body}>
-          <Image
-            style={styles.image}
-            source={image} />
           <Text style={styles.text}>{ text }</Text>
         </View>
         <Text style={styles.sendedBy}>{ time }</Text>
       </View>
-    );fff
+    );
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        { this._generateView() }
+      </View>
+    );
   }
 }
 
@@ -37,6 +83,8 @@ TalkBalloon.propTypes = {
   time: PropTypes.string.isRequired,
   image: PropTypes.number
 };
+
+export default withNavigation(TalkBalloon);
 
 const styles = StyleSheet.create({
   container: {
